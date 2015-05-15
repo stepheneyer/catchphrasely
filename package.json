@@ -1,0 +1,22 @@
+{
+  "name": "catchphrasely",
+  "version": "1.0.0",
+  "description": "A vocab app to practice web dev terms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stepheneyer/Catchphrasely.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stepheneyer/Catchphrasely/issues"
+  },
+  "homepage": "https://github.com/stepheneyer/Catchphrasely#readme",
+  "dependencies": {
+    "underscore": "^1.8.3"
+  }
+}
