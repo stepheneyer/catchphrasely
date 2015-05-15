@@ -24,19 +24,19 @@
         <h1>CatchPhrase.ly<small> guess a word!</small></h1>
         </header>
       <!-- submit form -->
-<form class="form-inline">
+<form id="phrase-form" class="form-inline">
   <div class="form-group">
     <label for="newWordInput">Word</label>
-    <input type="text" class="form-control" id="newWordInput" placeholder="Enter a new word">
+    <input name="word" type="text" class="form-control" id="new-word" placeholder="Enter a new word">
   </div>
   <div class="form-group">
-    <label for="newDescInput">Description</label>
-    <input type="email" class="form-control" id="newDescInput" placeholder="Write description">
+    <label for="newDescInput">Definition</label>
+    <input name="definition" type="text" class="form-control" id="newDefInput" placeholder="Write definition">
   </div>
   <button type="submit" class="btn btn-default">Add phrase</button>
 </form>
         <!-- all phrases -->
-        <ul class="list-group" id="phrases-ul">
+        <ul class="list-group" id="phrase-ul">
         </ul>
     </div>
     <footer class="footer"><small>Created by Stephen Eyer <br>Copyright © 2015</small></footer>
@@ -46,6 +46,7 @@
     <% _.each(collection, function(item){ %>
       <li class='list-group-item'><%= item.word %>
         <span class="label label-default"><%= item.definition%></span>
+        <button data-id="<%= item.id %>" onclick="Phrase.delete(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       </li>
     <% }); %>
   </script>

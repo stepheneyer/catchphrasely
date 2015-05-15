@@ -1,4 +1,4 @@
-//SERVER-SIDE
+// SERVER-SIDE
 
 // REQUIREMENTS //
 var express = require("express"),
@@ -10,10 +10,10 @@ var app = express();
 
 // CONFIG //
 
-//Serve js & css files into a public folder
+// Serve js & css files into a public folder
 app.use (express.static(__dirname + '/public'));
 
-//Body parser config
+// Body parser config
 app.use (bodyParser.urlencoded({extended: true}));
 
 // DATA //
@@ -31,28 +31,42 @@ var phrases = [
 // ROUTES //
 
 // root path
-
 app.get("/", function (req, res){
 	// render index.html
 	res.sendFile(path.join(__dirname + '/public/views/index.html'));
 });
 
 //phrases index path
-
 app.get("/phrases", function (req, res){
-	//render phrases as JSON
+	// render phrases as JSON
 	res.send(JSON.stringify(phrases));
 });
 
 //delete a phrase
-
 app.post("/phrases", function (req, res){
-	//phrase#delete
+	var newPhrase = req.body;
+	// add a unique id
+	newPhrase.id = phrases[phrases.length - 1].id + 1;
+	// add new phrase to the array
+	phrases.push(newPhrase);
+	// send a reponse with newly created object
+	res.send(JSON.stringify(newPhrase));
+});
 
+app.delete("/phrases/:id", function (req, res){
+  	// set the value of the id
+  	var targetId = parseInt(req.params.id, 10);  //what is 10?
+  	// find item in the array matching the id
+  	var targetItem = _.findWhere(phrases, {id: targetId});
+  	// get the index of the found item
+  	var index = phrases.indexOf(targetItem);
+  	// remove the item at that index, only remove 1 item
+  	phrases.splice(index, 1);
+  	// render deleted object
+  	res.send(JSON.stringify(targetItem));
 });
 
 //listen on port 3000
-
 app.listen(3000, function() {
 	console.log("Running");
 });
