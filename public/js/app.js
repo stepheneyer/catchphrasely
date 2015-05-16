@@ -12,9 +12,9 @@ $(function() {
 function View() {}
 View.init = function() {
     // phrase form submit event listener
-    $("#phrase-form").on("submit", function(e) {
+    $("#phrase-form").on("submit", function(event) {
         // stop page reload
-        e.preventDefault();
+        event.preventDefault();
         // format form data into a query string
         var phraseParams = $(this).serialize();
         Phrase.create(phraseParams);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>CatchPhrase.ly</title>
     <meta charset="utf-8" />
@@ -21,33 +22,43 @@
     <div id="page-wrapper" class="container">
         <!-- header -->
         <header class="page-header">
-        <h1>CatchPhrase.ly<small> guess a word!</small></h1>
+            <h1>CatchPhrase.ly<small> guess a word!</small></h1>
         </header>
-      <!-- submit form -->
-<form id="phrase-form" class="form-inline">
-  <div class="form-group">
-    <label for="newWordInput">Word</label>
-    <input name="word" type="text" class="form-control" id="new-word" placeholder="Enter a new word">
-  </div>
-  <div class="form-group">
-    <label for="newDescInput">Definition</label>
-    <input name="definition" type="text" class="form-control" id="newDefInput" placeholder="Write definition">
-  </div>
-  <button type="submit" class="btn btn-default">Add phrase</button>
-</form>
-        <!-- all phrases -->
-        <ul class="list-group" id="phrase-ul">
-        </ul>
+        <!-- submit form -->
+        <div class='row'>
+            <div class='col-md-5'>
+                <form id="phrase-form">
+                    <div class="form-group">
+                        <label for="word">New Word</label>
+                        <input name="word" type="text" class="form-control" id="new-word" placeholder="Enter a new word">
+                    </div>
+                    <div class="form-group">
+                        <label for="definition">Definition</label>
+                        <textarea name="definition" class="form-control" id="newDefInput" rows="3" placeholder="Write definition"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-default">Add phrase</button>
+                </form>
+            </div>
+            <div class='col-md-6'>
+                <h3><span class= "label label-primary">Phrase list</span></h3>
+                <br>
+                <!-- all phrases -->
+                <ul class="list-group" id="phrase-ul">
+                </ul>
+            </div>
+        </div>
     </div>
     <footer class="footer"><small>Created by Stephen Eyer <br>Copyright © 2015</small></footer>
 </body>
 <!-- Underscore template -->
-  <script type="text/template" id="phrases-template">
+<script type="text/template" id="phrases-template">
     <% _.each(collection, function(item){ %>
-      <li class='list-group-item'><%= item.word %>
-        <span class="label label-default"><%= item.definition%></span>
-        <button data-id="<%= item.id %>" onclick="Phrase.delete(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-      </li>
-    <% }); %>
-  </script>
+        <li class='list-group-item'>
+            <h4><span class="label label-default"><%= item.word %></span></h4>
+            <%= item.definition %>
+                <button data-id="<%= item.id %>" onclick="Phrase.delete(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        </li>
+        <% }); %>
+</script>
+
 </html>
