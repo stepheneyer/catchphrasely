@@ -32,6 +32,7 @@ View.render = function(items, parentId, templateId) {
 function Phrase() {}
 Phrase.all = function() {
     $.get("/phrases", function(res) {
+        console.log(res);
         // parse the response
         var phrases = JSON.parse(res);
         // render the results
