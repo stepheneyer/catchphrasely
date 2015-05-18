@@ -4,8 +4,8 @@
 var express = require("express"),
     bodyParser = require("body-parser"),
     path = require("path");
-	_ = require("underscore");
-	db = require("./models");
+    _ = require("underscore");
+    db = require("./models");
 
 var app = express();
 
@@ -39,15 +39,17 @@ app.get("/phrases", function (req, res) {
     });
 });
 
-//delete a phrase
+//add a phrase
 app.post("/phrases", function (req, res) {
-    db.Phrase.create(req.body.phrase,
+    db.Phrase.create(req.body,
         function(err, phrase) {
-        res.send(201, JSON.stringify(phrase));
+        res.send(201, phrase);
     });
 });
 
+//delete a phrase
 app.delete("/phrases/:id", function (req, res) {
+    console.log(req.params.id);
     db.Phrase.findOneAndRemove({
         _id: req.params.id
     }, function(err, phrase) {

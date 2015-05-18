@@ -52,6 +52,7 @@ Phrase.create = function(phraseParams) {
 
 Phrase.delete = function(phrase) {
     var phraseId = $(phrase).data().id;
+    console.log(phraseId);
     $.ajax({
         url: '/phrases/' + phraseId,
         type: 'DELETE',
