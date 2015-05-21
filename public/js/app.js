@@ -34,7 +34,7 @@ Phrase.all = function() {
     $.get("/phrases", function(res) {
         console.log(res);
         // parse the response
-        var phrases = JSON.parse(res);
+        var phrases = res;
         // render the results
         View.render(phrases, "phrase-ul", "phrases-template");
     });

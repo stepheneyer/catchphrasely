@@ -21,8 +21,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// DATA //
-
 // ROUTES //
 
 // root path
@@ -35,7 +33,7 @@ app.get("/", function(req, res) {
 app.get("/phrases", function (req, res) {
     db.Phrase.find({},
         function(err, phrases) {
-            res.send(200, JSON.stringify(phrases));
+            res.send(200, phrases);
     });
 });
 
@@ -49,7 +47,6 @@ app.post("/phrases", function (req, res) {
 
 //delete a phrase
 app.delete("/phrases/:id", function (req, res) {
-    console.log(req.params.id);
     db.Phrase.findOneAndRemove({
         _id: req.params.id
     }, function(err, phrase) {

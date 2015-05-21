@@ -55,7 +55,7 @@
         <li class='list-group-item'>
             <h4><span class="label label-default"><%= item.word %></span></h4>
             <%= item.definition %>
-                <button data-id="<%= item.id %>" onclick="Phrase.delete(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <button data-id="<%= item._id %>" onclick="Phrase.delete(this)" type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
         </li>
         <% }); %>
 </script>
